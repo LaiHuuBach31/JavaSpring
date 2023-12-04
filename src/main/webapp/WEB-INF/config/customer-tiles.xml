@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN" "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+
+	<definition name="masterCustomer"
+		template="/views/customer/layouts/masterCustomer.jsp">
+
+		<put-attribute name="header"
+			value="/views/customer/layouts/header.jsp" />
+
+		<put-attribute name="footer"
+			value="/views/customer/layouts/footer.jsp" />
+
+		<put-attribute name="body" value="" />
+
+	</definition>
+
+
+	<definition name="home_customer" extends="masterCustomer">
+
+		<put-attribute name="body"
+			value="/views/customer/home.jsp" />
+
+	</definition>
+
+	<definition name="about" extends="masterCustomer">
+
+		<put-attribute name="body"
+			value="/views/customer/about.jsp" />
+
+	</definition>
+
+	<definition name="menu" extends="masterCustomer">
+
+		<put-attribute name="body"
+			value="/views/customer/menu.jsp" />
+
+	</definition>
+	
+	<definition name="detail" extends="masterCustomer">
+
+		<put-attribute name="body"
+			value="/views/customer/detail.jsp" />
+
+	</definition>
+
+	<definition name="blog" extends="masterCustomer">
+
+		<put-attribute name="body"
+			value="/views/customer/blog.jsp" />
+
+	</definition>
+
+	<definition name="delivery" extends="masterCustomer">
+
+		<put-attribute name="body"
+			value="/views/customer/delivery.jsp" />
+
+	</definition>
+
+	<definition name="location" extends="masterCustomer">
+
+		<put-attribute name="body"
+			value="/views/customer/locations.jsp" />
+
+	</definition>
+
+	<definition name="logincus" extends="masterCustomer">
+
+		<put-attribute name="body"
+			value="/views/customer/login.jsp" />
+
+	</definition>
+	
+	
+	<definition name="registercus" extends="masterCustomer">
+
+		<put-attribute name="body"
+			value="/views/customer/register.jsp" />
+
+	</definition>
+
+	<definition name="cart" extends="masterCustomer">
+
+		<put-attribute name="body"
+			value="/views/customer/cart.jsp" />
+
+	</definition>
+	
+	<definition name="checkout" extends="masterCustomer">
+
+		<put-attribute name="body"
+			value="/views/customer/checkout.jsp" />
+
+	</definition>
+	
+</tiles-definitions>

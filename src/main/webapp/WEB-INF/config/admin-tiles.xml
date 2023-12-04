@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+
+"-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+
+"http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+
+	<definition name="adminlayout"
+		template="/views/admin/layouts/masterAdmin.jsp">
+
+		<put-attribute name="body" value="" />
+
+	</definition>
+
+
+	<definition name="home" extends="adminlayout">
+
+		<put-attribute name="body"
+			value="/views/admin/home.jsp" />
+
+	</definition>
+	
+	<definition name="login" extends="adminlayout">
+
+		<put-attribute name="body"
+			value="/views/admin/login.jsp" />
+
+	</definition>
+	
+	<definition name="categorylist" extends="adminlayout">
+
+		<put-attribute name="body"
+			value="/views/admin/category/list.jsp" />
+
+	</definition>
+	
+	<definition name="categorycreate" extends="adminlayout">
+
+		<put-attribute name="body"
+			value="/views/admin/category/add.jsp" />
+
+	</definition>
+	
+	<definition name="categoryedit" extends="adminlayout">
+
+		<put-attribute name="body"
+			value="/views/admin/category/edit.jsp" />
+
+	</definition>
+	
+	<definition name="productlist" extends="adminlayout">
+
+		<put-attribute name="body"
+			value="/views/admin/product/list.jsp" />
+
+	</definition>
+	
+	<definition name="productcreate" extends="adminlayout">
+
+		<put-attribute name="body"
+			value="/views/admin/product/add.jsp" />
+
+	</definition>
+	
+	<definition name="productedit" extends="adminlayout">
+
+		<put-attribute name="body"
+			value="/views/admin/product/edit.jsp" />
+
+	</definition>
+	
+	<definition name="rolelist" extends="adminlayout">
+
+		<put-attribute name="body"
+			value="/views/admin/role/list.jsp" />
+
+	</definition>
+	
+	<definition name="rolecreate" extends="adminlayout">
+
+		<put-attribute name="body"
+			value="/views/admin/role/add.jsp" />
+
+	</definition>
+	
+	<definition name="roleedit" extends="adminlayout">
+
+		<put-attribute name="body"
+			value="/views/admin/role/edit.jsp" />
+
+	</definition>
+	
+	<definition name="userlist" extends="adminlayout">
+
+		<put-attribute name="body"
+			value="/views/admin/user/list.jsp" />
+
+	</definition>
+	
+	<definition name="usercreate" extends="adminlayout">
+
+		<put-attribute name="body"
+			value="/views/admin/user/add.jsp" />
+
+	</definition>
+	
+	<definition name="useredit" extends="adminlayout">
+
+		<put-attribute name="body"
+			value="/views/admin/user/edit.jsp" />
+
+	</definition>
+	
+	<definition name="orderlist" extends="adminlayout">
+
+		<put-attribute name="body"
+			value="/views/admin/order/list.jsp" />
+
+	</definition>
+	
+	<definition name="orderdetail" extends="adminlayout">
+
+		<put-attribute name="body"
+			value="/views/admin/order/detail.jsp" />
+
+	</definition>
+
+</tiles-definitions>
