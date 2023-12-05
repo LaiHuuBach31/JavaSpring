@@ -100,7 +100,9 @@ input {
 				</div>
 
 			</div>
-
+			<div class="text-center">
+				<strong style="color: red">${failed}</strong>
+			</div>
 			<f:form class="subscribe" action="registercus" modelAttribute="user"
 				method="post">
 				<div class="row">

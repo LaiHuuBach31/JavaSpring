@@ -24,7 +24,7 @@
 		<intercept-url pattern="/cart" access="hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')" />
 		<form-login login-page="/logincus"
 			login-processing-url="/j_spring_security_login"
-			default-target-url="/home" authentication-failure-url="/logincus?error" username-parameter="userName"
+			default-target-url="/" authentication-failure-url="/logincus?error" username-parameter="userName"
 			password-parameter="password" />
 		<logout logout-url="/j_spring_security_logout"
 			logout-success-url="/logoutcus" delete-cookies="JSESSIONID" />

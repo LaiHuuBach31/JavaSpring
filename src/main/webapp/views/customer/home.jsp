@@ -1,6 +1,6 @@
 <!-- home-section 
 			================================================== -->
-<div id="carouselExampleDark" class="carousel carousel-dark slide"
+<div id="carouselExampleDark" class="carousel slide carousel-fade" data-bs-ride="carousel"
 	data-bs-ride="carousel">
 	<div class="carousel-indicators">
 		<button type="button" data-bs-target="#carouselExampleDark"
@@ -45,7 +45,7 @@
 			class="visually-hidden">Next</span>
 	</button>
 </div>
-
+ -->
 <!-- End home section -->
 
 <!-- week-item-section 

@@ -118,10 +118,12 @@ public class CartController {
 	}
 	
 	@PostMapping("updateQuantity")
-    public String updateQuantity(@RequestParam Integer cartItemId, @RequestParam int quantity) {
-		System.out.println(cartItemId + " cartItemId");
-		System.out.println(quantity + " quantity");
-        return "";
+    public String updateQuantity(@RequestParam Integer cartId, @RequestParam int quantity) {
+		Cart cart = cartDAO.find(cartId);
+		cart.setQuantity(quantity);
+		cart.setTotal(quantity * cart.getProduct().getPrice());
+		cartDAO.update(cart);
+        return "redirect:/cart";
     }
 
 	@GetMapping("delete/{id}")
@@ -186,6 +188,9 @@ public class CartController {
 //			mailDAO.send();
 
 			if (check) {
+				for (Cart cart : list) {
+					cartDAO.delete(cart.getId());
+				}
 				redirectAttrs.addFlashAttribute("success", "Order successfully");
 				return "redirect:/";
 			} else {

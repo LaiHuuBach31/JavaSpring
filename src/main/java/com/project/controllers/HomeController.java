@@ -62,9 +62,11 @@ public class HomeController {
 
 		        if (userObject instanceof CustomUserDetails) {
 		            CustomUserDetails user = (CustomUserDetails) userObject;
-		            int count = cartDAO.getAll().size();
-					model.addAttribute("count", count);
-					session.setAttribute("user", user);
+		            String name = user.getFullName();
+		            int countCart = cartDAO.getAll().size();
+		            System.out.println(countCart);
+		            session.setAttribute("countCart", countCart);
+					session.setAttribute("name", name);
 		        } 
 		        
 		        
@@ -126,8 +128,8 @@ public class HomeController {
 	
 	@GetMapping("registercus")
 	public String register(Model model) {
-//		User user = new User();
-//		model.addAttribute("user", user);
+		User user = new User();
+		model.addAttribute("user", user);
 		return "registercus";
 
 	}
@@ -146,13 +148,14 @@ public class HomeController {
 			user_Role.setUser(u);
 			Role r = new Role();
 			r.setName("ROLE_USER");
-			
+			r.setId(2);
 			user_Role.setRole(r);
-//			boolean r = userDAO.addUserRoleus(null);
+			userDAO.addUserRole(user_Role);
 			if (check) {
 				redirectAttrs.addFlashAttribute("success", "Register successfuly");
 				return "redirect:/logincus";
 			} else {
+				redirectAttrs.addFlashAttribute("faild", "Register faild");
 				return "registercus";
 			}
 		}
@@ -162,7 +165,7 @@ public class HomeController {
 	@RequestMapping("/logincus")
 	public String login(@RequestParam(value = "error", required = false) String error, Model model) {
 		if (error != null) {
-			model.addAttribute("mess", "Login failed!");
+			model.addAttribute("faild", "Login failed!");
 		}
 		return "logincus";
 
@@ -170,7 +173,7 @@ public class HomeController {
 	
 	@RequestMapping("/logoutcus")
 	public String logout(Model model) {
-		model.addAttribute("mess", "Has Logged out!!!");
+		model.addAttribute("success", "Has Logged out!!!");
 		return "logincus";
 	}
 	

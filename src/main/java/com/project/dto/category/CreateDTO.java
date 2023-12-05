@@ -19,7 +19,7 @@ public class CreateDTO {
 	private Boolean status;
 	
 	public CreateDTO() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public CreateDTO(@NotEmpty(message = "Tên không được để trống") String name, MultipartFile image, Boolean status) {

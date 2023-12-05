@@ -2,10 +2,11 @@
 <section class="comming-soon-section">
 	<div class="comming-soon-content">
 		<div class="container">
-			<img src="${pageContext.servletContext.contextPath}/images/foody.png" alt="">
+			<img src="${pageContext.servletContext.contextPath}/images/foody.png"
+				alt="">
 			<h1>Login</h1>
 			<p>Please log in to continue</p>
-			
+
 			<div id="clock">
 				<div class="row">
 					<div class="col-sm-3">
@@ -35,9 +36,13 @@
 				</div>
 
 			</div>
-			
+
 			<form class="subscribe"
 				action="<c:url value='j_spring_security_login' />" method='POST'>
+				<div class="text-center">
+					<strong style="color: red">${faild}</strong>
+				</div>
+
 				<input type="text" id="subscribe" name="userName"
 					placeholder="User Name" /> <input type="password" id="subscribe"
 					name="password" placeholder="Password" /> <input type="hidden"

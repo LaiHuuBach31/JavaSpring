@@ -28,7 +28,7 @@
 					</thead>
 					<c:set var="totalPrice" value="0" />
 					<c:forEach items="${list}" var="c" varStatus="loop">
-						<tr>
+						<tr class="cart-item" data-cart-id="${c.id}">
 							<td><a href="delete/${c.id}" style="color: red"><i
 									class="fa fa-trash-o"></i></a></td>
 							<td><img
@@ -41,12 +41,14 @@
 							</td>
 							<td>$<span class="price stat-price">${c.product.price}</span></td>
 							<td>
-								<div class="quantity-add">
-									<button class="decrease">-</button>
-									<input type="text" class="quantity-number"
+								
+								<div class="form-quantity">
+									<button class="minus">-</button>
+									<input type="text" class="quantity-cart"
 										value="${c.quantity}" />
-									<button class="increase">+</button>
+									<button class="plus">+</button>
 								</div>
+								
 							</td>
 							<td>$<span class="price tot-price">${c.total}</span></td>
 						</tr>
@@ -102,39 +104,72 @@
 </section>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script>
-	$(document)
-			.ready(
-					function() {
-						$('.quantity-number')
-								.on(
-										'input',
-										function() {
-											var cartItemId = $(this).closest(
-													'tr').data('cart-item-id');
-											var quantity = $(this).val();
+$(document).ready(function() {
+    $(".form-quantity .plus").on("click", function() {
+        var row = $(this).closest(".cart-item");
+        var cartId = row.data("cart-id");
+        var quantityInput = row.find(".quantity-cart");
+        var quantity = parseInt(quantityInput.val()) + 1;
+		
+        //alert("Hello! I am an alert box!!");
+        
+        $.ajax({
+            type: "POST",
+            url: "updateQuantity",
+            data: {
+            	cartId: cartId,
+                quantity: quantity
+            },
+            success: function(response) {
+                quantityInput.val(quantity);
+                updateTotalPrice(row);
+            },
+            error: function(error) {
+                console.log("Error updating quantity: " + error);
+            }
+        });
+    });
 
-											$
-													.ajax({
-														type : 'POST',
-														url : '${pageContext.request.contextPath}/updateQuantity',
-														data : {
-															cartItemId : cartItemId,
-															quantity : quantity
-														},
-														success : function(
-																response) {
-															if (response === 'Success') {
-																
-																updateTotalPrice();
-															} else {
-																i
-															}
-														},
-														error : function() {
-															
-														}
-													});
-										});
+    function updateTotalPrice(row) {
+        var price = parseFloat(row.find(".stat-price").text());
+        var quantity = parseInt(row.find(".quantity-cart").val());
+        var totalPrice = price * quantity;
+        row.find(".tot-price").text(totalPrice.toFixed(2));
+    }
+});
 
-					});
+$(document).ready(function() {
+    $(".form-quantity .minus").on("click", function() {
+        var row = $(this).closest(".cart-item");
+        var cartId = row.data("cart-id");
+        var quantityInput = row.find(".quantity-cart");
+        var quantity = parseInt(quantityInput.val()) - 1;
+		
+        //alert("Hello! I am an alert box!!");
+        
+        $.ajax({
+            type: "POST",
+            url: "updateQuantity",
+            data: {
+            	cartId: cartId,
+                quantity: quantity
+            },
+            success: function(response) {
+                quantityInput.val(quantity);
+                updateTotalPrice(row); 
+            },
+            error: function(error) {
+                console.log("Error updating quantity: " + error);
+            }
+        });
+    });
+
+    function updateTotalPrice(row) {
+        var price = parseFloat(row.find(".stat-price").text());
+        var quantity = parseInt(row.find(".quantity-cart").val());
+        var totalPrice = price * quantity;
+        row.find(".tot-price").text(totalPrice.toFixed(2));
+    }
+});
+
 </script>

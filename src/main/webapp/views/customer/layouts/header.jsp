@@ -1,4 +1,6 @@
+
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <style>
 .modal {
 	display: none;
@@ -77,11 +79,22 @@ button {
 					<li class="nav-item"><a class="nav-link" href="location">Locations</a>
 					</li>
 				</ul>
+				
 				<a href="${pageContext.servletContext.contextPath}/cart"
-					class="shopping-cart"><i class="fa fa-shopping-bag"></i><span>2</span></a>
+					class="shopping-cart"><i class="fa fa-shopping-bag">
+					</i>
+					<c:choose>
+					<c:when test="${countCart > 0}">
+							<span>${countCart}</span>
+					</c:when>
+					<c:otherwise>
+						<span>0</span>
+					</c:otherwise>
+				</c:choose>
+					</a>
 
 				<c:choose>
-					<c:when test="${not empty user}">
+					<c:when test="${not empty name}">
 						<img
 							src="https://cdn.alongwalk.info/vn/wp-content/uploads/2022/03/13034625/image-danh-sach-nhung-buc-anh-viet-nam-lot-top-anh-dep-the-gioi-164709278437272.jpg"
 							class="shopping-cart mr-3"
